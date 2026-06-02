@@ -1,0 +1,724 @@
+/* ================================================================
+   ShopWave — Custom Stylesheet
+   Stack: Bootstrap 5 (grid/components) + custom CSS (design layer)
+   Sections:
+     1. Design Tokens
+     2. Base Reset
+     3. Navbar
+     4. Hero Section
+     5. Features Strip
+     6. Section Headings (shared)
+     7. Filter Buttons
+     8. Product Cards
+     9. About Section
+    10. Newsletter / Contact Section
+    11. Footer
+    12. Utilities
+    13. Responsive Media Queries
+================================================================ */
+
+
+/* ================================================================
+   1. DESIGN TOKENS
+   Central source of truth for colors, spacing, and transitions.
+================================================================ */
+:root {
+  --color-primary:      #4f46e5;   /* indigo-600  — main brand color   */
+  --color-primary-dark: #3730a3;   /* indigo-800  — hover states        */
+  --color-accent:       #f59e0b;   /* amber-500   — CTA accents         */
+  --color-danger:       #ef4444;   /* red-500     — hot badge, sale     */
+  --color-success:      #10b981;   /* emerald-500 — sale badge          */
+  --color-text:         #1e1b4b;   /* deep indigo — body text           */
+  --color-muted:        #64748b;   /* slate-500   — secondary text      */
+  --color-bg:           #f8fafc;   /* slate-50    — page background     */
+  --color-white:        #ffffff;
+  --color-dark-navy:    #0f0e2f;   /* deep navy   — navbar / footer     */
+
+  --card-radius: 1rem;
+  --transition:  0.25s ease;
+}
+
+
+/* ================================================================
+   2. BASE RESET
+================================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }   /* smooth anchor scrolling */
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* ================================================================
+   3. NAVBAR
+   Fixed top. Frosted-glass look via backdrop-filter.
+   Adds .scrolled class when user scrolls past 40 px (via JS).
+================================================================ */
+#mainNav {
+  background: rgba(15, 14, 47, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.85rem 0;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+/* Slightly more opaque once the user scrolls down */
+#mainNav.scrolled {
+  background: var(--color-dark-navy);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+}
+
+#mainNav .navbar-brand {
+  color: var(--color-white);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+#mainNav .nav-link {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.4rem;
+  transition: color var(--transition), background var(--transition);
+}
+
+#mainNav .nav-link:hover,
+#mainNav .nav-link.active {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile: stack links nicely inside the collapse panel */
+@media (max-width: 991.98px) {
+  #navMenu .navbar-nav { padding: 0.75rem 0; }
+}
+
+
+/* ================================================================
+   4. HERO SECTION
+   Full-viewport deep-indigo gradient with decorative blurred
+   circles (pseudo-elements) and animated floating trust badges.
+================================================================ */
+.hero-section {
+  min-height: 100vh;
+  padding-top: 80px;            /* clear the fixed navbar */
+  padding-bottom: 4rem;
+  background: linear-gradient(135deg, #0f0e2f 0%, #1e1b4b 50%, #312e81 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative blurred ambient circles */
+.hero-section::before,
+.hero-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.hero-section::before {
+  width: 500px;
+  height: 500px;
+  background: #6366f1;
+  top: -120px;
+  right: -80px;
+}
+
+.hero-section::after {
+  width: 320px;
+  height: 320px;
+  background: var(--color-accent);
+  bottom: 40px;
+  left: -60px;
+}
+
+/* Pill badge above headline */
+.hero-badge {
+  background: rgba(99, 102, 241, 0.25);
+  border: 1px solid rgba(99, 102, 241, 0.55);
+  color: #a5b4fc;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 2rem;
+}
+
+/* Responsive headline using clamp so it scales between viewports */
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+/* Gradient text for the highlighted word */
+.hero-accent {
+  background: linear-gradient(90deg, #818cf8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.68);
+  max-width: 440px;
+  margin-bottom: 2rem;
+}
+
+/* Primary CTA button with glow shadow */
+.hero-cta {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.hero-cta:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(79, 70, 229, 0.55);
+}
+
+/* Wrapper that positions the floating trust-badge chips */
+.hero-image-wrapper {
+  position: relative;
+  padding: 2.5rem;
+}
+
+.hero-img {
+  border-radius: var(--card-radius);
+  box-shadow: 0 32px 72px rgba(0, 0, 0, 0.45);
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Floating glassmorphism chips */
+.hero-floating-card {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--color-white);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 2;
+  animation: floatUp 4s ease-in-out infinite;
+}
+
+.hero-floating-card.card-1 { top: 20px;  left: 0;   animation-delay: 0s;  }
+.hero-floating-card.card-2 { bottom: 30px; right: 10px; animation-delay: 2s; }
+
+/* Subtle vertical float animation */
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+
+/* ================================================================
+   5. FEATURES STRIP
+   A thin row of icon + label + sub-label tiles between the hero
+   and the products section.
+================================================================ */
+.features-strip {
+  border-top:    1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.feature-item { padding: 0.5rem; }
+
+.feature-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: var(--color-text);
+}
+
+.feature-sub {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+
+/* ================================================================
+   6. SECTION HEADINGS (shared between Products, About, Contact)
+================================================================ */
+
+/* Small pill-shaped category tag above headings */
+.section-tag {
+  display: inline-block;
+  background: #eef2ff;
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 2rem;
+}
+
+/* Section main heading — fluid size via clamp */
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0;
+}
+
+/* Optional subtitle under the heading */
+.section-sub {
+  color: var(--color-muted);
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0.5rem auto 0;
+}
+
+
+/* ================================================================
+   7. FILTER BUTTONS
+   Pill-style toggle buttons for the product category filter bar.
+================================================================ */
+.filter-btn {
+  border: 1.5px solid #cbd5e1;
+  color: var(--color-muted);
+  font-weight: 500;
+  font-size: 0.88rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: 2rem;
+  background: transparent;
+  transition: background var(--transition), border-color var(--transition),
+              color var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+
+/* ================================================================
+   8. PRODUCT CARDS
+   Each card lifts on hover (translateY + deeper shadow).
+   Image zooms slightly via transform on the img element.
+================================================================ */
+.products-section {
+  background: var(--color-bg);
+}
+
+.product-card {
+  background: var(--color-white);
+  border-radius: var(--card-radius);
+  box-shadow: 0 2px 14px rgba(30, 27, 75, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 44px rgba(79, 70, 229, 0.14);
+}
+
+/* --- Image wrapper (relative so badges + wishlist button can overlay) --- */
+.product-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;   /* removes inline-block gap below the img */
+}
+
+.product-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Zoom image on card hover */
+.product-card:hover .product-img {
+  transform: scale(1.06);
+}
+
+/* --- Badges (New / Hot / % off) --- */
+.product-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.4rem;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+.product-badge.badge-hot  { background: var(--color-danger);  }
+.product-badge.badge-sale { background: var(--color-success); }
+
+/* --- Wishlist heart button (top-right of image) --- */
+.btn-wishlist {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color var(--transition), transform var(--transition);
+  padding: 0;
+}
+
+.btn-wishlist:hover {
+  color: var(--color-danger);
+  transform: scale(1.15);
+}
+
+/* --- Card body text area --- */
+.product-body {
+  padding: 1.1rem 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.product-name {
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin: 0.3rem 0 0.5rem;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.product-desc {
+  font-size: 0.84rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+  flex: 1;            /* pushes the price row to the card bottom */
+  margin-bottom: 0.5rem;
+}
+
+/* Star rating row */
+.product-rating {
+  font-size: 0.78rem;
+  color: var(--color-accent);
+}
+
+.product-rating span {
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+/* Price display */
+.product-price {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+/* Strikethrough original price shown on sale items */
+.product-price-old {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+/* "Shop Now" button on each card */
+.btn-shop {
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.45rem 1.1rem;
+  border-radius: 0.5rem;
+  border: none;
+  white-space: nowrap;
+  transition: background var(--transition), transform var(--transition);
+  text-decoration: none;
+}
+
+.btn-shop:hover {
+  background: var(--color-primary-dark);
+  color: var(--color-white);
+  transform: translateY(-1px);
+}
+
+
+/* ================================================================
+   9. ABOUT SECTION
+================================================================ */
+.about-img {
+  border-radius: var(--card-radius);
+  box-shadow: 0 22px 52px rgba(79, 70, 229, 0.14);
+}
+
+/* Benefits list — icon + text, no default list bullets */
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.about-list li {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+
+/* ================================================================
+  10. NEWSLETTER / CONTACT SECTION
+================================================================ */
+.contact-section {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+}
+
+.newsletter-card {
+  padding: 3.5rem 2rem;
+}
+
+/* Override section-tag colors inside the dark card */
+.newsletter-card .section-tag {
+  background: rgba(99, 102, 241, 0.25);
+  color: #a5b4fc;
+}
+
+.newsletter-input {
+  max-width: 380px;
+  border-radius: 0.6rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  outline: none;
+}
+
+.newsletter-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.22);
+}
+
+.newsletter-note {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0;
+}
+
+
+/* ================================================================
+  11. FOOTER
+================================================================ */
+.site-footer {
+  background: var(--color-dark-navy);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.footer-brand {
+  color: var(--color-white);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.footer-desc {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 300px;
+  line-height: 1.65;
+}
+
+/* Column heading (SHOP / HELP / CONTACT) */
+.footer-heading {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+}
+
+/* Quick-link lists */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color var(--transition);
+}
+
+.footer-links a:hover { color: var(--color-white); }
+
+/* Contact detail list (address / email / phone) */
+.footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.footer-contact li {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.55);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Social icon circles */
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background var(--transition), color var(--transition),
+              transform var(--transition);
+}
+
+.social-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-3px);
+}
+
+/* Divider above footer bottom bar */
+.footer-divider { border-color: rgba(255, 255, 255, 0.1); }
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.footer-legal {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.footer-legal:hover { color: rgba(255, 255, 255, 0.75); }
+
+
+/* ================================================================
+  12. UTILITIES
+================================================================ */
+
+/* Bootstrap's .text-primary resolves to its own variable.
+   Override it here to use our brand indigo instead. */
+.text-primary { color: var(--color-primary) !important; }
+.btn-outline-primary {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.btn-outline-primary:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+
+/* ================================================================
+  13. RESPONSIVE MEDIA QUERIES
+  Bootstrap's grid already handles most breakpoints.
+  These tweaks handle layout details the grid doesn't cover.
+================================================================ */
+
+/* ---- Tablet / Landscape phone (< 992px) ---- */
+@media (max-width: 991.98px) {
+  .hero-section {
+    text-align: center;
+    padding-top: 100px;
+  }
+
+  /* Center the subtitle and CTA group under the headline */
+  .hero-subtitle { margin-left: auto; margin-right: auto; }
+  .hero-cta-group { justify-content: center; }
+}
+
+/* ---- Mobile (< 576px) ---- */
+@media (max-width: 575.98px) {
+  .hero-title    { font-size: 1.9rem; }
+  .section-title { font-size: 1.5rem; }
+
+  /* Slightly shorter card images on small screens to save space */
+  .product-img { height: 175px; }
+
+  /* Tighter newsletter padding */
+  .newsletter-card { padding: 2rem 1rem; }
+
+  /* Let the footer brand description span full width */
+  .footer-desc { max-width: 100%; }
+
+  /* Stack price + button on very narrow cards */
+  .product-body .d-flex {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}

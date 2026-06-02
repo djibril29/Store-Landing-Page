@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopWave — Modern Online Store</title>
+
+    <!-- Bootstrap 5 CSS (installed locally via npm) -->
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Bootstrap Icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+
+    <!-- =====================================================
+         NAVBAR
+         Fixed top bar with logo, nav links, and cart button.
+         Collapses to hamburger on mobile (Bootstrap navbar).
+    ===================================================== -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav" aria-label="Main navigation">
+      <div class="container">
+
+        <!-- Brand / Logo -->
+        <a class="navbar-brand" href="#home">
+          <i class="bi bi-bag-heart-fill me-2" aria-hidden="true"></i>ShopWave
+        </a>
+
+        <!-- Mobile hamburger toggle -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible nav links + cart -->
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+          <!-- Cart button with badge -->
+          <a href="#" class="btn btn-outline-light btn-sm position-relative" aria-label="Shopping cart, 3 items">
+            <i class="bi bi-cart3 me-1" aria-hidden="true"></i>Cart
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" aria-hidden="true">3</span>
+          </a>
+        </div>
+
+      </div>
+    </nav>
+    <!-- /NAVBAR -->
+
+
+    <!-- =====================================================
+         HERO SECTION
+         Full-viewport banner with headline, subtitle, and CTAs.
+         Decorative blurred circles are applied via CSS pseudo-elements.
+    ===================================================== -->
+    <section class="hero-section d-flex align-items-center" id="home" aria-label="Hero banner">
+      <div class="container">
+        <div class="row align-items-center gy-5">
+
+          <!-- Left: text content -->
+          <div class="col-lg-6 text-white">
+            <span class="hero-badge mb-3 d-inline-block">New Collection 2026</span>
+            <h1 class="hero-title">
+              Discover Products<br />
+              <span class="hero-accent">You'll Love</span>
+            </h1>
+            <p class="hero-subtitle">
+              Shop the latest trends in tech, fashion, and lifestyle.
+              Free shipping on orders over $50.
+            </p>
+            <div class="d-flex gap-3 flex-wrap hero-cta-group">
+              <a href="#products" class="btn btn-primary btn-lg hero-cta">
+                Shop Now <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+              </a>
+              <a href="#about" class="btn btn-outline-light btn-lg">Learn More</a>
+            </div>
+          </div>
+
+          <!-- Right: decorative image (hidden on mobile) -->
+          <div class="col-lg-6 d-none d-lg-flex justify-content-center">
+            <div class="hero-image-wrapper">
+              <!-- Floating trust badges -->
+              <div class="hero-floating-card card-1">
+                <i class="bi bi-truck" aria-hidden="true"></i> Free Shipping
+              </div>
+              <div class="hero-floating-card card-2">
+                <i class="bi bi-shield-check" aria-hidden="true"></i> Secure Payment
+              </div>
+              <img
+                src="https://placehold.co/480x360/4f46e5/ffffff?text=ShopWave+Store"
+                alt="ShopWave store showcase"
+                class="hero-img"
+              />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- /HERO SECTION -->
+
+
+    <!-- =====================================================
+         FEATURES STRIP
+         Four trust/benefit icons displayed in a compact row.
+    ===================================================== -->
+    <section class="features-strip py-4 bg-white" aria-label="Store benefits">
+      <div class="container">
+        <div class="row g-3 text-center">
+
+          <div class="col-6 col-md-3">
+            <div class="feature-item">
+              <i class="bi bi-truck fs-3 text-primary" aria-hidden="true"></i>
+              <div class="feature-label">Free Shipping</div>
+              <div class="feature-sub">On orders over $50</div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <div class="feature-item">
+              <i class="bi bi-arrow-counterclockwise fs-3 text-primary" aria-hidden="true"></i>
+              <div class="feature-label">Easy Returns</div>
+              <div class="feature-sub">30-day return policy</div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <div class="feature-item">
+              <i class="bi bi-shield-check fs-3 text-primary" aria-hidden="true"></i>
+              <div class="feature-label">Secure Checkout</div>
+              <div class="feature-sub">SSL encrypted</div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <div class="feature-item">
+              <i class="bi bi-headset fs-3 text-primary" aria-hidden="true"></i>
+              <div class="feature-label">24/7 Support</div>
+              <div class="feature-sub">Always here for you</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- /FEATURES STRIP -->
+
+
+    <!-- =====================================================
+         PRODUCTS SECTION
+         Responsive grid of 8 product cards.
+         Each card has: image, badge, wishlist, category,
+         name, description, star rating, price, and Shop Now button.
+    ===================================================== -->
+    <section class="products-section py-5" id="products" aria-label="Featured products">
+      <div class="container">
+
+        <!-- Section header -->
+        <div class="text-center mb-5">
+          <span class="section-tag">Our Collection</span>
+          <h2 class="section-title mt-2">Featured Products</h2>
+          <p class="section-sub">Hand-picked items just for you — quality meets style.</p>
+        </div>
+
+        <!-- Category filter buttons (UI only — no JS filtering needed for layout) -->
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-4" role="group" aria-label="Filter by category">
+          <button class="btn filter-btn active">All</button>
+          <button class="btn filter-btn">Tech</button>
+          <button class="btn filter-btn">Fashion</button>
+          <button class="btn filter-btn">Lifestyle</button>
+        </div>
+
+        <!-- Product cards grid -->
+        <div class="row g-4">
+
+          <!-- ---- Product 1: Wireless Headphones ---- -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="product-card h-100">
+              <div class="product-img-wrapper">
+                <img
+                  src="https://placehold.co/400x280/6366f1/ffffff?text=Headphones"
+                  alt="Wireless Headphones"
+                  class="product-img"
+                />
+                <span class="product-badge">New</span>
+                <button class="btn-wishlist" aria-label="Add Wireless Headphones to wishlist">
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <span class="product-category">Tech</span>
+                <h3 class="product-name">Wireless Headphones</h3>
+                <p class="product-desc">
+                  Premium sound quality with active noise cancellation and 30-hour battery life.
+                </p>
+                <div class="product-rating" aria-label="Rating: 4.5 out of 5, 128 reviews">
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-half" aria-hidden="true"></i>
+                  <span class="ms-1">(128)</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                  <span class="product-price">$89.99</span>
+                  <a href="#" class="btn btn-shop">Shop Now</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- ---- Product 2: Smart Watch ---- -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="product-card h-100">
+              <div class="product-img-wrapper">
+                <img
+                  src="https://placehold.co/400x280/0ea5e9/ffffff?text=Smart+Watch"
+                  alt="Smart Watch Pro"
+                  class="product-img"
+                />
+                <span class="product-badge badge-hot">Hot</span>
+                <button class="btn-wishlist" aria-label="Add Smart Watch Pro to wishlist">
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <span class="product-category">Tech</span>
+                <h3 class="product-name">Smart Watch Pro</h3>
+                <p class="product-desc">
+                  Track your health and stay connected with GPS, heart rate, and sleep monitoring.
+                </p>
+                <div class="product-rating" aria-label="Rating: 5 out of 5, 245 reviews">
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <span class="ms-1">(245)</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                  <span class="product-price">$149.99</span>
+                  <a href="#" class="btn btn-shop">Shop Now</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- ---- Product 3: Running Shoes ---- -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="product-card h-100">
+              <div class="product-img-wrapper">
+                <img
+                  src="https://placehold.co/400x280/10b981/ffffff?text=Running+Shoes"
+                  alt="Running Shoes X"
+                  class="product-img"
+                />
+                <!-- Sale badge shows the discount percentage -->
+                <span class="product-badge badge-sale">-20%</span>
+                <button class="btn-wishlist" aria-label="Add Running Shoes X to wishlist">
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <span class="product-category">Fashion</span>
+                <h3 class="product-name">Running Shoes X</h3>
+                <p class="product-desc">
+                  Lightweight, breathable, and built for performance. Perfect for any terrain.
+                </p>
+                <div class="product-rating" aria-label="Rating: 4 out of 5, 89 reviews">
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star" aria-hidden="true"></i>
+                  <span class="ms-1">(89)</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                  <div>
+                    <span class="product-price">$79.99</span>
+                    <!-- Strikethrough original price for sale items -->
+                    <span class="product-price-old ms-2">$99.99</span>
+                  </div>
+                  <a href="#" class="btn btn-shop">Shop Now</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- ---- Product 4: Leather Backpack ---- -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="product-card h-100">
+              <div class="product-img-wrapper">
+                <img
+                  src="https://placehold.co/400x280/f59e0b/ffffff?text=Backpack"
+                  alt="Leather Backpack"
+                  class="product-img"
+                />
+                <button class="btn-wishlist" aria-label="Add Leather Backpack to wishlist">
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <span class="product-category">Lifestyle</span>
+                <h3 class="product-name">Leather Backpack</h3>
+                <p class="product-desc">
+                  Genuine leather with multiple compartments. Fits a 15&quot; laptop with style.
+                </p>
+                <div class="product-rating" aria-label="Rating: 4.5 out of 5, 73 reviews">
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-half" aria-hidden="true"></i>
+                  <span class="ms-1">(73)</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                  <span class="product-price">$119.99</span>
+                  <a href="#" class="btn btn-shop">Shop Now</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- ---- Product 5: Sunglasses ---- -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="product-card h-100">
+              <div class="product-img-wrapper">
+                <img
+                  src="https://placehold.co/400x280/ec4899/ffffff?text=Sunglasses"
+                  alt="Designer Sunglasses"
+                  class="product-img"
+                />
+                <span class="product-badge">New</span>
+                <button class="btn-wishlist" aria-label="Add Designer Sunglasses to wishlist">
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <span class="product-category">Fashion</span>
+                <h3 class="product-name">Designer Sunglasses</h3>
+                <p class="product-desc">
+                  UV400 protection with polarized lenses and lightweight titanium frame.
+                </p>
+                <div class="product-rating" aria-label="Rating: 4 out of 5, 56 reviews">
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star" aria-hidden="true"></i>
+                  <span class="ms-1">(56)</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                  <span class="product-price">$64.99</span>
+                  <a href="#" class="btn btn-shop">Shop Now</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- ---- Product 6: Ergonomic Laptop Stand ---- -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="product-card h-100">
+              <div class="product-img-wrapper">
+                <img
+                  src="https://placehold.co/400x280/8b5cf6/ffffff?text=Laptop+Stand"
+                  alt="Ergonomic Laptop Stand"
+                  class="product-img"
+                />
+                <span class="product-badge badge-hot">Hot</span>
+                <button class="btn-wishlist" aria-label="Add Ergonomic Laptop Stand to wishlist">
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <span class="product-category">Tech</span>
+                <h3 class="product-name">Ergonomic Laptop Stand</h3>
+                <p class="product-desc">
+                  Adjustable aluminum stand that improves posture and keeps your laptop cool.
+                </p>
+                <div class="product-rating" aria-label="Rating: 5 out of 5, 312 reviews">
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <span class="ms-1">(312)</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                  <span class="product-price">$45.99</span>
+                  <a href="#" class="btn btn-shop">Shop Now</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- ---- Product 7: Yoga Mat ---- -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="product-card h-100">
+              <div class="product-img-wrapper">
+                <img
+                  src="https://placehold.co/400x280/14b8a6/ffffff?text=Yoga+Mat"
+                  alt="Premium Yoga Mat"
+                  class="product-img"
+                />
+                <span class="product-badge badge-sale">-15%</span>
+                <button class="btn-wishlist" aria-label="Add Premium Yoga Mat to wishlist">
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <span class="product-category">Lifestyle</span>
+                <h3 class="product-name">Premium Yoga Mat</h3>
+                <p class="product-desc">
+                  Non-slip surface, eco-friendly materials, and extra thickness for joint support.
+                </p>
+                <div class="product-rating" aria-label="Rating: 4.5 out of 5, 94 reviews">
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-half" aria-hidden="true"></i>
+                  <span class="ms-1">(94)</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                  <div>
+                    <span class="product-price">$42.49</span>
+                    <span class="product-price-old ms-2">$49.99</span>
+                  </div>
+                  <a href="#" class="btn btn-shop">Shop Now</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- ---- Product 8: Insulated Water Bottle ---- -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="product-card h-100">
+              <div class="product-img-wrapper">
+                <img
+                  src="https://placehold.co/400x280/ef4444/ffffff?text=Water+Bottle"
+                  alt="Insulated Water Bottle"
+                  class="product-img"
+                />
+                <button class="btn-wishlist" aria-label="Add Insulated Water Bottle to wishlist">
+                  <i class="bi bi-heart" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <span class="product-category">Lifestyle</span>
+                <h3 class="product-name">Insulated Water Bottle</h3>
+                <p class="product-desc">
+                  Keeps drinks cold 24 hours or hot 12 hours. BPA-free stainless steel.
+                </p>
+                <div class="product-rating" aria-label="Rating: 4 out of 5, 167 reviews">
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star" aria-hidden="true"></i>
+                  <span class="ms-1">(167)</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                  <span class="product-price">$34.99</span>
+                  <a href="#" class="btn btn-shop">Shop Now</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div><!-- /.row (product grid) -->
+
+        <!-- View all link -->
+        <div class="text-center mt-5">
+          <a href="#" class="btn btn-outline-primary btn-lg px-5">
+            View All Products <i class="bi bi-grid ms-1" aria-hidden="true"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+    <!-- /PRODUCTS SECTION -->
+
+
+    <!-- =====================================================
+         ABOUT SECTION
+         Two-column layout: image on the left, text on the right.
+         Switches to single column on smaller screens.
+    ===================================================== -->
+    <section class="about-section py-5 bg-white" id="about" aria-label="About ShopWave">
+      <div class="container">
+        <div class="row align-items-center g-5">
+
+          <!-- Image column -->
+          <div class="col-lg-6">
+            <img
+              src="https://placehold.co/560x400/4f46e5/ffffff?text=About+ShopWave"
+              alt="About ShopWave — our team and workspace"
+              class="about-img w-100"
+            />
+          </div>
+
+          <!-- Text column -->
+          <div class="col-lg-6">
+            <span class="section-tag">Our Story</span>
+            <h2 class="section-title mt-2">Why Choose ShopWave?</h2>
+            <p class="text-muted mt-3">
+              We started ShopWave with a simple mission: make quality products accessible
+              to everyone. Since 2020 we've served over 50,000 happy customers worldwide.
+            </p>
+            <!-- Benefits list -->
+            <ul class="about-list mt-4">
+              <li>
+                <i class="bi bi-check-circle-fill text-primary me-2" aria-hidden="true"></i>
+                Curated selection of top-quality products
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill text-primary me-2" aria-hidden="true"></i>
+                Fast, reliable worldwide shipping
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill text-primary me-2" aria-hidden="true"></i>
+                Dedicated customer support team
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill text-primary me-2" aria-hidden="true"></i>
+                Secure and hassle-free checkout
+              </li>
+            </ul>
+            <a href="#products" class="btn btn-primary mt-4 px-4">
+              Start Shopping <i class="bi bi-bag ms-1" aria-hidden="true"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- /ABOUT SECTION -->
+
+
+    <!-- =====================================================
+         NEWSLETTER / CONTACT SECTION
+         Dark gradient card with email subscribe form.
+    ===================================================== -->
+    <section class="contact-section py-5" id="contact" aria-label="Newsletter signup">
+      <div class="container">
+        <div class="newsletter-card text-center">
+          <span class="section-tag">Stay Updated</span>
+          <h2 class="section-title mt-2 text-white">Get Exclusive Deals</h2>
+          <p class="text-white-50 mt-2 mb-4">
+            Subscribe to our newsletter and be the first to know about new arrivals
+            and special discounts.
+          </p>
+          <!-- Email subscription form -->
+          <form
+            class="newsletter-form d-flex flex-column flex-sm-row gap-2 justify-content-center"
+            novalidate
+            aria-label="Newsletter subscription form"
+          >
+            <label for="newsletterEmail" class="visually-hidden">Email address</label>
+            <input
+              id="newsletterEmail"
+              type="email"
+              class="form-control newsletter-input"
+              placeholder="Enter your email address"
+              required
+            />
+            <button type="submit" class="btn btn-warning fw-semibold px-4">
+              Subscribe <i class="bi bi-send ms-1" aria-hidden="true"></i>
+            </button>
+          </form>
+          <p class="newsletter-note mt-3">No spam. Unsubscribe at any time.</p>
+        </div>
+      </div>
+    </section>
+    <!-- /NEWSLETTER SECTION -->
+
+
+    <!-- =====================================================
+         FOOTER
+         Four-column layout: brand, shop links, help links,
+         and contact info. Collapses gracefully on mobile.
+    ===================================================== -->
+    <footer class="site-footer py-5" id="footer" aria-label="Site footer">
+      <div class="container">
+        <div class="row g-4">
+
+          <!-- Brand + social links -->
+          <div class="col-12 col-md-4">
+            <a class="footer-brand" href="#home">
+              <i class="bi bi-bag-heart-fill me-2" aria-hidden="true"></i>ShopWave
+            </a>
+            <p class="footer-desc mt-3">
+              Your go-to destination for premium products across tech, fashion, and
+              lifestyle. Quality, value, and style — all in one place.
+            </p>
+            <div class="footer-socials d-flex gap-2 mt-3">
+              <a href="#" class="social-btn" aria-label="Facebook">
+                <i class="bi bi-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-btn" aria-label="Instagram">
+                <i class="bi bi-instagram" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-btn" aria-label="X (Twitter)">
+                <i class="bi bi-twitter-x" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-btn" aria-label="YouTube">
+                <i class="bi bi-youtube" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Shop quick links -->
+          <div class="col-6 col-md-2">
+            <h4 class="footer-heading">Shop</h4>
+            <ul class="footer-links">
+              <li><a href="#">New Arrivals</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              <li><a href="#">Tech</a></li>
+              <li><a href="#">Fashion</a></li>
+              <li><a href="#">Lifestyle</a></li>
+            </ul>
+          </div>
+
+          <!-- Help links -->
+          <div class="col-6 col-md-2">
+            <h4 class="footer-heading">Help</h4>
+            <ul class="footer-links">
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Shipping Info</a></li>
+              <li><a href="#">Returns</a></li>
+              <li><a href="#">Track Order</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact info -->
+          <div class="col-12 col-md-4">
+            <h4 class="footer-heading">Contact</h4>
+            <ul class="footer-contact">
+              <li>
+                <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                123 Commerce Street, San Francisco, CA 94105
+              </li>
+              <li>
+                <i class="bi bi-envelope" aria-hidden="true"></i>
+                hello@shopwave.com
+              </li>
+              <li>
+                <i class="bi bi-telephone" aria-hidden="true"></i>
+                +1 (555) 012-3456
+              </li>
+            </ul>
+          </div>
+
+        </div><!-- /.row -->
+
+        <!-- Footer bottom bar -->
+        <hr class="footer-divider mt-4" />
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+          <p class="footer-copy mb-0">&copy; 2026 ShopWave. All rights reserved.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="footer-legal">Privacy Policy</a>
+            <a href="#" class="footer-legal">Terms of Service</a>
+            <a href="#" class="footer-legal">Cookies</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+    <!-- /FOOTER -->
+
+
+    <!-- Bootstrap 5 JS bundle (includes Popper.js for dropdowns/tooltips) -->
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Lightweight interaction scripts -->
+    <script src="scripts.js"></script>
+
+  </body>
+</html>
